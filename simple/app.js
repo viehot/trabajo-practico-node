@@ -1,11 +1,14 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var Sequelize = require('sequelize')
- , sequelize = new Sequelize('database_name', 'username', 'password', {
+var express = require('express')
+  , path = require('path')
+  , favicon = require('serve-favicon')
+  , logger = require('morgan')
+  , cookieParser = require('cookie-parser')
+  , bodyParser = require('body-parser')
+  , Sequelize = require('sequelize')
+
+
+
+sequelize = new Sequelize('database_name', 'username', 'password', {
  dialect: "sqlite",
  storage: "./db/database.sqlite"
  })
@@ -19,6 +22,8 @@ sequelize
  console.log('Connection has been established successfully.')
  }
  })
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
