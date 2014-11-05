@@ -4,7 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var Sequelize = require('sequelize')
+ , sequelize = new Sequelize('database_name', 'username', 'password', {
+ dialect: "sqlite",
+ storage: "./db/database.sqlite"
+ })
+ 
+sequelize
+ .authenticate()
+ .complete(function(err) {
+ if (!!err) {
+ console.log('Unable to connect to the database:', err)
+ } else {
+ console.log('Connection has been established successfully.')
+ }
+ })
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
