@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Sequelize = require('sequelize')
   , sequelize = module.parent.exports.sequelize
-  , app = require('app');
+  , app = module.parent.exports.app;
 exports.sequelize = sequelize;
 /* GET home page. */
 
@@ -16,8 +16,8 @@ app.get('/', function(req,res){
     } else if (!results) {
       console.log('No user with the username "john-doe" has been found.')
     } else {
-      console.log('Hello ' + results.nombre + '!')
-      console.log('All attributes of john:', results.value)
+       // res.end('holis');
+      res.render('index', {title: 'Listado', obj: results})
     }
     });
 });

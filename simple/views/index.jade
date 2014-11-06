@@ -1,12 +1,19 @@
 extends layout
 
 block content
-  h1.center= title
-  p.center Welcome to #{title}
-  form
-    .row.collapse(style="padding: 0 10% 0 15%")
-      .small-9.columns
-        input#searchEmployeeKeyword(type='text')
-      .small-3.columns
-        a.button.small#searchEmployeeBtn(href='#',style="height: 29px;") Search
-  #search-results
+ h1= title
+ table
+    thead
+        tr
+          th Id
+          th Nombre
+          th Apellido
+          th E-Mail
+    tbody
+    - obj.forEach(function(v,i){
+        tr
+          td #{v['idEmployee']}
+          td #{v['nombre']}
+          td #{v['apellido']}
+          td #{v['email']}
+    -})
