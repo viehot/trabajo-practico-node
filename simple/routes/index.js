@@ -21,5 +21,11 @@ app.get('/', function(req,res){
     }
     });
 });
-
+app.get('/employees/delete/:id', function(req,res){
+    User.find({where: {idEmployee:req.params.id}}).success(function(employee) {
+      employee.destroy().success(function() {
+        res.redirect('/');
+      }).error(function(err) { console.log(err); });
+    });
+});
 module.exports = router;

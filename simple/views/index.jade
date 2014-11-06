@@ -16,4 +16,6 @@ block content
           td #{v['nombre']}
           td #{v['apellido']}
           td #{v['email']}
+          td
+            a(href="employees/delete/"+v['idEmployee']) Delete
     -})
