@@ -10,7 +10,7 @@ var express = require('express')
         dialect: "sqlite",
         storage: "./db/database.sqlite"
     });
-exports.sequelize = sequelize;
+//exports.sequelize = sequelize;
 sequelize
  .authenticate()
  .complete(function(err) {
@@ -20,7 +20,7 @@ sequelize
  console.log('Connection has been established successfully.')
  }
  })
-
+exports.sequelize = sequelize;
 
 
 var routes = require('./routes/index');
