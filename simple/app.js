@@ -4,15 +4,13 @@ var express = require('express')
   , logger = require('morgan')
   , cookieParser = require('cookie-parser')
   , bodyParser = require('body-parser')
-  , Sequelize = require('sequelize')
+  , Sequelize = require('sequelize'),
 
-
-
-sequelize = new Sequelize('database_name', 'username', 'password', {
- dialect: "sqlite",
- storage: "./db/database.sqlite"
- })
- 
+    sequelize = new Sequelize('database_name', 'username', 'password', {
+        dialect: "sqlite",
+        storage: "./db/database.sqlite"
+    });
+exports.sequelize = sequelize;
 sequelize
  .authenticate()
  .complete(function(err) {
@@ -24,8 +22,8 @@ sequelize
  })
 
 
+
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var admin = require('./routes/admin');
 
 var app = express();
@@ -44,7 +42,6 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
