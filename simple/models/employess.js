@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize')
   , sequelize = module.parent.exports.sequelize;
 
-console.log('holis');
+//console.log('holis');
 var User = sequelize.define('Employees', {
   idEmployee: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   nombre: Sequelize.STRING,

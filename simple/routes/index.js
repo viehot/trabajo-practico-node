@@ -3,6 +3,7 @@ var router = express.Router();
 var Sequelize = require('sequelize')
   , sequelize = module.parent.exports.sequelize
   , app = module.parent.exports.app;
+        
 exports.sequelize = sequelize;
 /* GET home page. */
 
@@ -27,5 +28,19 @@ app.get('/employees/delete/:id', function(req,res){
         res.redirect('/');
       }).error(function(err) { console.log(err); });
     });
+});
+app.get('/employees/new', function(req, res){
+    res.render('users', {title: 'New employeer', obj:{}})
+})
+app.post('/employees/new', function(req, res){
+    User.create({
+        idEmployee: '',
+        nombre: '',
+        apellido: '',
+        email: '',
+        hashed_password: ''
+    }).complete(function(err, user){
+        res.redirect('/');
+    }) 
 });
 module.exports = router;

@@ -1,6 +1,15 @@
 extends layout
 
-body
-    block content
-      h1= title
-      p Welcome to #{title}
+block content
+  h1= title
+    form(action="/employees/new", method="post") 
+    label(for='nombre') Nombre:
+    input#nombre(name='nombre',value="")
+    label(for='apellido') Apellido:
+    input#apellido(name='apellido',value="")
+    label(for='email') E-mail:
+    input#email(name='email',value="")
+    label(for='hashed_password') Password:
+    input#hashed_password(name='hashed_password',value="")
+    
+    input#send(type='submit', value='Save')
