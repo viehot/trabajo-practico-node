@@ -3,13 +3,15 @@ extends layout
 block content
   h1= title
     form(action="/employees/new", method="post") 
-    label(for='nombre') Nombre:
-    input#nombre(name='nombre',value="")
-    label(for='apellido') Apellido:
-    input#apellido(name='apellido',value="")
-    label(for='email') E-mail:
-    input#email(name='email',value="")
-    label(for='hashed_password') Password:
-    input#hashed_password(name='hashed_password',value="")
     
-    input#send(type='submit', value='Save')
+        label(for='nombre') Nombre:
+        input(type='text',name='nombre',value='')
+        label(for='apellido') Apellido:
+        input(type='text',name='apellido',value='')
+        label(for='email') E-mail:
+        input(type='text',name='email',value='')
+        label(for='hashed_password') Password:
+        input(type='text',name='hashed_password',value='')
+
+        input#send(type='submit', value='Save')
+    

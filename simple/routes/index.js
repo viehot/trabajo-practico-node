@@ -30,16 +30,16 @@ app.get('/employees/delete/:id', function(req,res){
     });
 });
 app.get('/employees/new', function(req, res){
-    res.render('users', {title: 'New employeer', obj:{}})
+    res.render('users', {title: 'New employeer'})
 })
 app.post('/employees/new', function(req, res){
     User.create({
-        idEmployee: '',
-        nombre: '',
-        apellido: '',
-        email: '',
-        hashed_password: ''
+        nombre: req.param('nombre'),
+        apellido: req.param('apellido'),
+        email: req.param('email'),
+        hashed_password: req.param('hashed_password')
     }).complete(function(err, user){
+        console.log(user);
         res.redirect('/');
     }) 
 });
