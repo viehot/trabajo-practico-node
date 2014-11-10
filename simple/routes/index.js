@@ -39,7 +39,29 @@ app.post('/employees/new', function(req, res){
         email: req.param('email'),
         hashed_password: req.param('hashed_password')
     }).complete(function(err, user){
+        //console.log(user);
+        res.redirect('/');
+    }) 
+});
+app.get('/employees/edit/:id', function(req, res){
+    User.find({where: {idEmployee:req.params.id}}).success(function(employee) {
+        console.log(employee);
+        res.render('Edit', {title: 'Edit employeer', obj:employee})
+    })
+})
+app.post('/employees/edit/:id', function(req, res){
+    User.find({where: {idEmployee:req.params.id}
+        
+    }).complete(function(err, user){
         console.log(user);
+        console.log('saaaaaaaaaa');
+        user.nombre = req.param('nombre'),
+        user.apellido = req.param('apellido'),
+        user.email = req.param('email');
+        user.save(function(err, doc){
+        console.log('Andate a la puta que te pario');
+        console.log(doc);      
+    });
         res.redirect('/');
     }) 
 });

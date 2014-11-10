@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+    form(action="", method="post") 
+    
+        label(for='nombre') Nombre:
+        input(type='text',name='nombre',value='')
+        label(for='apellido') Apellido:
+        input(type='text',name='apellido',value='')
+        label(for='email') E-mail:
+        input(type='text',name='email',value='')
+        
+        input#send(type='submit', value='Save')
